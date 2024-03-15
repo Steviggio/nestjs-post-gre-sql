@@ -1,15 +1,19 @@
 // TypeORM config file template with PostGreSQL
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, EntitySchema } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({
+    length: 10,
+  })
   firstName: string;
 
-  @Column()
+  @Column({
+    length: 15,
+  })
   lastName: string;
 
   @Column({ default: true })
