@@ -1,5 +1,5 @@
 // TypeORM config file template with PostGreSQL
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, ObjectId, ObjectIdColumn } from "typeorm";
 
 @Entity()
 export class User {
@@ -18,6 +18,22 @@ export class User {
 
   @Column({ default: true })
   isActive: true
+}
+
+Entity()
+export class UserAuth {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column({
+    length: 25,
+    unique: true
+  })
+  username: string;
+
+  @Column({ length: 8 })
+  password: string
+
 }
 
 // export const UserSchema = new EntitySchema<User>({

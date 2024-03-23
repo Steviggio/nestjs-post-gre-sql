@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { User } from "src/user/user.entity";
+import { User, UserAuth } from "src/user/user.entity";
 
 @Module({
   imports: [
@@ -11,11 +11,12 @@ import { User } from "src/user/user.entity";
       username: "postgres",
       password: "testpwd",
       database: "postgres",
-      entities: [User],
+      entities: [User, UserAuth],
       synchronize: true,
-      logging: false
+      logging: true,
+      autoLoadEntities: true
     }),
-    TypeOrmModule.forFeature([User])
+    TypeOrmModule.forFeature([User, UserAuth])
   ],
 })
 
